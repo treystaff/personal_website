@@ -1,0 +1,33 @@
+<!-- Inherits from maps.html -->
+{% extends "maps.html" %}
+{% block map_content %}
+
+    <script>
+        map.setView([40.0274,-105.2519], 4);
+
+        var granger = L.marker([41.7383, -86.1489]).addTo(map);
+        granger.bindPopup("<strong>Granger, IN</strong><br>A great place to live!");
+
+        var clearwater = L.marker([37.5056, -97.5014]).addTo(map);
+        clearwater.bindPopup("<strong>Clearwater, KS</strong>");
+
+        var Lawrence = L.marker([38.9717, -95.2353]).addTo(map);
+        Lawrence.bindPopup("<strong>Lawrence, KS</strong>");
+
+        var Salina = L.marker([38.8403, -97.6114]).addTo(map);
+        Salina.bindPopup("<strong>Salina, KS</strong>");
+
+        var Goddard = L.marker([37.6723905, -97.550695]).addTo(map);
+        Goddard.bindPopup("<strong>Goddard, KS</strong>");
+        
+        var Broomfield = L.marker([39.9533, -105.0520]).addTo(map);
+        Broomfield.bindPopup("<strong>Broomfield, CO</strong>");
+
+        var Rochester = L.marker([44.0234, -92.4630]).addTo(map);
+        Rochester.bindPopup("<strong>Rochester, MN</strong>");
+
+        var Lincoln = L.marker([40.8106, -96.6803]).addTo(map);
+        Lincoln.bindPopup("<strong>Lincoln, NE</strong>");
+    </script>
+
+{% endblock %}

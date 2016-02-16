@@ -1,0 +1,84 @@
+<!--Base template containing content/logic shared by all other pages-->
+<html lang="en-US">
+    <head>
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>SOMETHING</title>
+        {% endif %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+			integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" 
+			integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Leaflet stylesheet -->
+        {% if request.path == url_for('maps') %}
+             <link rel="stylesheet"
+             href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+        {% endif %}
+    </head>
+    <body>
+
+		<header class="navbar">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapse-content"
+                            aria-expanded="false">
+
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                            
+                        <a class="navbar-brand" 
+                            href="{{ url_for('index') }}">TREYZONE</a>
+                    </div> <!--navbar-header-->
+
+                    <!--below will be the links that will collapse on sm-->
+                    <div class="collapse navbar-collapse"
+                        id="collapse-content">
+                       
+                        <ul class="nav navbar-nav">
+                            <li {% if request.path == url_for('blog') 
+                            %}class="active"{% endif %}><a href="{{ url_for('blog')
+                                }}">Blog <span class="sr-only">{% if
+                                    request.path == url_for('blog') %}(current){% endif
+                                    %}</span></a>
+                            </li>
+
+                            <li {% if request.path == url_for('maps')
+                            %}class="active"{% endif %}><a href="{{
+                                url_for('maps')
+                                }}">Maps <span class="sr-only">{% if
+                                    request.path == url_for('maps') %}(current){% endif
+                                    %}</span></a>
+                            </li>
+
+                    </div> <!--collapsable div elements-->
+
+
+                </div> <!--container-fluid-->
+            </nav> <!--navbar navbar-inverse-->
+        </header> <!--navbar-->
+
+
+        <!--Block content from other templates added here...-->
+        {% block content %}{% endblock %}
+
+	<!--Put these scripts down here so that if loading is slow, rest of page still loads (according to a youtube vid lol)-->
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    </body>
+</html>
